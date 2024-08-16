@@ -1,2 +1,70 @@
-<p1>Hola mundo</p1>
-<p2>bienvenidos</p2>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>OakLand</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" src="generalScript.js"></script>
+  </head>
+  <body class="mat-typography">
+    <header>
+      <nav class="horizontal-menu">
+        <ul>
+          <li class="has-submenu">
+            <a href="#">Archivo</a>
+            <ul class="submenu">
+              <li><a href="#" >Abrir</a></li>
+              <li><input type="file" id archivo></li>
+              <li><a href="#">Guardar</a></li>
+              <li><a href="#">Guardar como...</a></li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <a href="#">Editar</a>
+            <ul class="submenu">
+              <li><a href="#">Seleccionar</a></li>
+              <li><a href="#">Ejecutar</a></li>
+              <li><a href="#">Reporte</a></li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <a href="#" onclick="mensajeAlert('OakLand IDE \nCompiladores 2\nCreado por Pablo Yeguech')">Acerca de...</a>            
+          </li>
+          <!--li><a href="#">Portfolio</a></li>
+          <li><a href="#">Contact</a></li-->
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <div class="c1">
+          <textarea [(ngModel)]="dtsp.Content" rows="30"></textarea>
+      </div>
+      <div class="c2">
+        <div id="botonera">
+          <button >Ejecutar</button>
+          <button >Reportes</button>
+          <button >Limpiar</button>
+        </div>
+      </div>
+      <div class="c3">
+        <div class="tab">
+          <button class="tablinks" onclick="mostrarConsola(event, 'terminal')">Consola</button>
+          <button class="tablinks" onclick="mostrarConsola(event, 'simbolos')">Simbolos</button>
+          <button class="tablinks" onclick="mostrarConsola(event, 'errores')">Errores</button>
+        </div>
+
+        <div id="terminal" class="tabcontent">
+          <textarea  rows="15" class="fondoOut" ></textarea>
+        </div>
+
+        <div id="simbolos" class="tabcontent">
+          <textarea class="fondoOut" rows="15"></textarea>
+        </div>
+
+        <div id="errores" class="tabcontent">
+          <textarea class="fondoOut" rows="15"></textarea>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
