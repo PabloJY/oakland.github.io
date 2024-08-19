@@ -26,7 +26,15 @@ document.getElementById('archivo').addEventListener('change', function(event) {
     }
 });
 
-
+document.getElementById('saveButton').addEventListener('click', function() {
+    const text = document.getElementById('fileContent').value;
+    const blob = new Blob([text], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'archivo.oak';  // Sugiere un nombre para el archivo
+    link.click();
+    URL.revokeObjectURL(link.href);
+});
 
 function mostrarConsola(evt, consoleName) {
     var i, tabcontent, tablinks;
