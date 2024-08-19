@@ -1,3 +1,33 @@
+const fileSelect = document.getElementById("abrirAr");
+const fileElem = document.getElementById("archivo");
+
+fileSelect.addEventListener(
+  "click",
+  (e) => {
+    if (fileElem) {
+      fileElem.click();
+    }
+  },
+  false,
+);
+
+
+document.getElementById('archivo').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const content = e.target.result;
+            document.getElementById('fileContent').textContent = content;
+        }
+        reader.readAsText(file);
+    } else {
+        alert("No se seleccionó ningún archivo.");
+    }
+});
+
+
+
 function mostrarConsola(evt, consoleName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -14,4 +44,26 @@ function mostrarConsola(evt, consoleName) {
 
 function mensajeAlert(mensaje){
     window.alert(mensaje)
+}
+
+function verDoom(){
+    console.log(document.getElementById('archivo').files[0]);
+    const file = document.getElementById('archivo').files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const content = e.target.result;
+            document.getElementById('fileContent').textContent = content;
+        }
+        reader.readAsText(file);
+    } else {
+        document.getElementById('fileContent').textContent = "Nuevos datos";
+        alert("No se seleccionó ningún archivo.");        
+    }    
+}
+
+function guardar(){
+    console.log(document.getElementById('fileContent'));
+    document.getElementById('fileContent').textContent = "Nuevos datos";
 }
