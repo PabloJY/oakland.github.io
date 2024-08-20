@@ -1,5 +1,20 @@
 const fileSelect = document.getElementById("abrirAr");
 const fileElem = document.getElementById("archivo");
+const areaTexto = document.getElementById('fileContent');
+const terminalT = document.getElementById('terminalTxt');
+const btnConsola= document.getElementById("btnConsola");
+const lineaTerminal = [];
+
+//const fechaFormateada = `${ahora.getDate()}/${ahora.getMonth() + 1}/${ahora.getFullYear()}`;
+
+window.onload = function(){
+    document.getElementById('terminal').style.display = "block";
+    document.getElementById('btnConsola').className+= " active";
+    escribirConsola('---------Bienvenido---------');
+    setTimeout(function() {
+        areaTexto.focus();
+    }, 0);
+}
 
 fileSelect.addEventListener(
   "click",
@@ -11,23 +26,23 @@ fileSelect.addEventListener(
   false,
 );
 
-
 document.getElementById('archivo').addEventListener('change', function(event) {
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
             const content = e.target.result;
-            document.getElementById('fileContent').textContent = content;
+            areaTexto.value = content;
         }
         reader.readAsText(file);
+        file.value=""
     } else {
         alert("No se seleccionó ningún archivo.");
     }
 });
 
 document.getElementById('saveButton').addEventListener('click', function() {
-    const text = document.getElementById('fileContent').value;
+    const text = areaTexto.value;
     const blob = new Blob([text], { type: 'text/plain' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -37,6 +52,7 @@ document.getElementById('saveButton').addEventListener('click', function() {
 });
 
 function mostrarConsola(evt, consoleName) {
+    console.log(evt);
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -62,16 +78,38 @@ function verDoom(){
         const reader = new FileReader();
         reader.onload = function(e) {
             const content = e.target.result;
-            document.getElementById('fileContent').textContent = content;
+            areaTexto.value = content;
         }
         reader.readAsText(file);
     } else {
-        document.getElementById('fileContent').textContent = "Nuevos datos";
+        areaTexto.value = "Nuevos datos";
         alert("No se seleccionó ningún archivo.");        
     }    
 }
 
-function guardar(){
-    console.log(document.getElementById('fileContent'));
-    document.getElementById('fileContent').textContent = "Nuevos datos";
+function guardar(){    
+    areaTexto.value = "Nuevos datos";
+}
+
+function ejecutaDatos(){
+    const codigo = areaTexto.value;    
+    escribirConsola(codigo);
+    
+}
+
+function escribirConsola(txt){
+    const ahora = new Date();
+    const horaFormateada = `${ahora.getHours()}:${ahora.getMinutes()}:${ahora.getSeconds()}`;    
+    lineaTerminal.push(horaFormateada+'-root>> '+txt);
+    let lineas = ""
+    lineaTerminal.forEach(linea=>{
+        lineas+= linea + '\n';
+    });
+    terminalT.value = lineas;
+    areaTexto.focus();
+}
+
+function limpiarA(){
+    areaTexto.value= "";
+    areaTexto.focus();
 }

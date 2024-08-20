@@ -42,20 +42,20 @@
       </div>
       <div class="c2">
         <div id="botonera">
-          <button >Ejecutar</button>
+          <button onclick="ejecutaDatos()">Ejecutar</button>
           <button >Reportes</button>
-          <button >Limpiar</button>
+          <button onclick="limpiarA()">Limpiar</button>
         </div>
       </div>
       <div class="c3">
         <div class="tab">
-          <button class="tablinks" onclick="mostrarConsola(event, 'terminal')">Consola</button>
+          <button class="tablinks" onclick="mostrarConsola(event, 'terminal')" id="btnConsola">Consola</button>
           <button class="tablinks" onclick="mostrarConsola(event, 'simbolos')">Simbolos</button>
           <button class="tablinks" onclick="mostrarConsola(event, 'errores')">Errores</button>
         </div>
 
         <div id="terminal" class="tabcontent">
-          <textarea  rows="15" class="fondoOut" ></textarea>
+          <textarea  rows="15" class="fondoOut" id="terminalTxt" disabled="true"></textarea>
         </div>
 
         <div id="simbolos" class="tabcontent">
