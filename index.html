@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
+<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +23,7 @@
             <a href="#">Editar</a>
             <ul class="submenu">
               <li><a href="#">Seleccionar</a></li>
-              <li><a href="#">Ejecutar</a></li>
+              <li><a href="#" >Ejecutar</a></li>
               <li><a href="#">Reporte</a></li>
             </ul>
           </li>
@@ -42,7 +41,7 @@
       </div>
       <div class="c2">
         <div id="botonera">
-          <button onclick="ejecutaDatos()">Ejecutar</button>
+          <button id="btnEjecuta">Ejecutar</button>
           <button >Reportes</button>
           <button onclick="limpiarA()">Limpiar</button>
         </div>
@@ -67,6 +66,8 @@
         </div>
       </div>
     </main>
-    <script type="text/javascript" src="generalScript.js"></script>
+    <script type="module" src="generalScript.js"></script>
   </body>
+  <script src="https://unpkg.com/peggy"></script>
+  <script src="https://cdn.jsdelivr.net/npm/peggy"></script>
 </html>

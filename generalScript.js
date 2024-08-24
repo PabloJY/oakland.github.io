@@ -1,3 +1,4 @@
+import { parse } from "./parser/parser.js";
 const fileSelect = document.getElementById("abrirAr");
 const fileElem = document.getElementById("archivo");
 const areaTexto = document.getElementById('fileContent');
@@ -41,6 +42,13 @@ document.getElementById('archivo').addEventListener('change', function(event) {
     }
 });
 
+document.getElementById('btnEjecuta').addEventListener('click', function(){
+    const codigo = areaTexto.value;    
+    const resultado = parse(codigo);
+    console.log(resultado);
+    resultado.execute();
+    escribirConsola(resultado);
+});
 document.getElementById('saveButton').addEventListener('click', function() {
     const text = areaTexto.value;
     const blob = new Blob([text], { type: 'text/plain' });
@@ -93,8 +101,8 @@ function guardar(){
 
 function ejecutaDatos(){
     const codigo = areaTexto.value;    
-    escribirConsola(codigo);
-    
+    const resultado = parse(codigo);
+    escribirConsola(resultado);    
 }
 
 function escribirConsola(txt){
@@ -113,3 +121,4 @@ function limpiarA(){
     areaTexto.value= "";
     areaTexto.focus();
 }
+
